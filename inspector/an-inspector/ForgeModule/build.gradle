@@ -1,0 +1,82 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+		compileOptions rootProject.ext.compileOptions
+    }
+
+	publishNonDefault true
+	productFlavors {
+        vanilla {
+        }
+        crosswalk { 
+			minSdkVersion 14
+			ndk {
+				abiFilters "armeabi-v7a", ""
+			}
+        }
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src']
+            resources.srcDirs = ['src']
+            aidl.srcDirs = ['src']
+            renderscript.srcDirs = ['src']
+            res.srcDirs = ['res']
+            assets.srcDirs = ['assets']
+        }
+
+        instrumentTest.setRoot('tests')
+    }
+
+	buildTypes {
+		debug rootProject.ext.debug
+		release rootProject.ext.release << {
+			proguardFile getDefaultProguardFile("proguard-android.txt")
+			proguardFile "proguard-project.txt"
+		}
+	}
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+	compile "com.android.support:support-v4:" + rootProject.ext.supportLibraryVersion
+    vanillaCompile (name:'ForgeCore-vanilla-debug', ext:'aar')
+    crosswalkCompile (name:'ForgeCore-crosswalk-debug', ext:'aar')
+    compile moduleDependencies()
+}
+
+repositories{
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+task updateModule (dependsOn: ":ForgeModule:assembleRelease") {
+    doLast {
+        copy {
+            from "build/intermediates/bundles/vanilla/release/classes.jar"
+            into "../../../module/android"
+            rename { "module.jar" }
+        }
+        println "\n\tUpdated module/android/module.jar"
+
+        copy {
+            from "build/outputs/aar/ForgeModule-vanilla-release.aar"
+            into "../../../module/android"
+            rename { "module.aar" }
+        }
+        println "\tUpdated module/android/module.aar\n"
+    }
+}
+
