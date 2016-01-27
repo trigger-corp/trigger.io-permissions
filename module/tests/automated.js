@@ -16,11 +16,16 @@ asyncTest("Sanity check permissions database", 2, function() {
 		Object.keys(forge.permissions[group]).forEach(function (entry) {
 			entry = forge.permissions[group][entry];
 			var permission = forge.is.android() ? android[entry] : ios[entry];
-			if (!permission) {
+			if (permission === "") {
+				// permission not supported on platform
+				return;
+			} else if (!permission) {
 				broken.push(entry + " -> " + permission);
-			} else if (forge.is.android() && !permission.startsWith("android.permission.")) {
+				return;
+			}
+			if (forge.is.android() && !permission.startsWith("android.permission.")) {
 				broken.push("android: " + entry + " -> " + permission);
-			} else if (forge.is.ios() && permission !== "") {
+			} else if (forge.is.ios() && !permission.startsWith("ios.permission.")) {
 				broken.push("ios: " + entry + " -> " + permission);
 			}
 		});
@@ -41,8 +46,8 @@ asyncTest("Test forge.permissions._resolve", 2, function() {
 		assert.ok(read === "android.permission.READ_CONTACTS");
 		assert.ok(write === "android.permission.WRITE_CONTACTS");
 	} else if (forge.is.ios()) {
-		assert.ok(read === "");
-		assert.ok(write === "");
+		assert.ok(read === "ios.permission.contacts");
+		assert.ok(write === "ios.permission.contacts");
 	} else {
 		assert.ok(read === "");
 		assert.ok(write === "");

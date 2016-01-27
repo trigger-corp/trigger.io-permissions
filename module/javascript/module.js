@@ -4,11 +4,6 @@
 forge.permissions = {
 
     check: function (permission, success, error) {
-		if (!forge.is.android()) { // TODO support iOS
-			success(true);
-			return;
-		}
-
 		permission = forge.permissions._resolve(permission);
 		if (permission === "") { // permission not supported on platform
 			success(true);
@@ -30,11 +25,6 @@ forge.permissions = {
 			success = rationale;
 		} else if (typeof rationale === "string") {
 			options.rationale = rationale;
-		}
-
-		if (!forge.is.android()) { // TODO support iOS
-			success(true);
-			return;
 		}
 
 		if (options.permission === "") { // permission not supported on platform
@@ -89,58 +79,74 @@ forge.permissions = {
 		write: "storage_write"
 	},
 
+	notification: {
+		receive: "notification_receive"
+	},
+	photos: {
+		"read": "photos_read"
+	},
+	reminders: {
+		receive: "reminders_receive"
+	},
+
 	// map permission to platform
 	_android: {
-		contacts_read:     "android.permission.READ_CONTACTS",
-		contacts_write:    "android.permission.WRITE_CONTACTS",
-		contacts_accounts: "android.permission.GET_ACCOUNTS",
-		calendar_read:     "android.permission.READ_CALENDAR",
-		calendar_write:    "android.permission.WRITE_CALENDAR",
-		camera_read:       "android.permission.CAMERA",
-		location_coarse:   "android.permission.ACCESS_COARSE_LOCATION",
-		location_fine:     "android.permission.ACCESS_FINE_LOCATION",
-		microphone_record: "android.permission.RECORD_AUDIO",
-		phone_state:       "android.permission.READ_PHONE_STATE",
-		phone_call:        "android.permission.CALL_PHONE",
-		phone_read:        "android.permission.READ_CALL_LOG",
-		phone_write:       "android.permission.WRITE_CALL_LOG",
-		phone_voicemail:   "android.permission.ADD_VOICEMAIL",
-		phone_sip:         "android.permission.USE_SIP",
-		phone_outgoing:    "android.permission.PROCESS_OUTGOING_CALLS",
-		sensors_read:      "android.permission.BODY_SENSORS",
-		sms_send:          "android.permission.SEND_SMS",
-		sms_receive:       "android.permission.RECEIVE_SMS",
-		sms_read:          "android.permission.READ_SMS",
-		sms_wap:           "android.permission.RECEIVE_WAP_PUSH",
-		sms_mms:           "android.permission.RECEIVE_MMS",
-		storage_read:      "android.permission.READ_EXTERNAL_STORAGE",
-		storage_write:     "android.permission.WRITE_EXTERNAL_STORAGE"
+		contacts_read:        "android.permission.READ_CONTACTS",
+		contacts_write:       "android.permission.WRITE_CONTACTS",
+		contacts_accounts:    "android.permission.GET_ACCOUNTS",
+		calendar_read:        "android.permission.READ_CALENDAR",
+		calendar_write:       "android.permission.WRITE_CALENDAR",
+		camera_read:          "android.permission.CAMERA",
+		location_coarse:      "android.permission.ACCESS_COARSE_LOCATION",
+		location_fine:        "android.permission.ACCESS_FINE_LOCATION",
+		microphone_record:    "android.permission.RECORD_AUDIO",
+		phone_state:          "android.permission.READ_PHONE_STATE",
+		phone_call:           "android.permission.CALL_PHONE",
+		phone_read:           "android.permission.READ_CALL_LOG",
+		phone_write:          "android.permission.WRITE_CALL_LOG",
+		phone_voicemail:      "android.permission.ADD_VOICEMAIL",
+		phone_sip:            "android.permission.USE_SIP",
+		phone_outgoing:       "android.permission.PROCESS_OUTGOING_CALLS",
+		sensors_read:         "android.permission.BODY_SENSORS",
+		sms_send:             "android.permission.SEND_SMS",
+		sms_receive:          "android.permission.RECEIVE_SMS",
+		sms_read:             "android.permission.READ_SMS",
+		sms_wap:              "android.permission.RECEIVE_WAP_PUSH",
+		sms_mms:              "android.permission.RECEIVE_MMS",
+		storage_read:         "android.permission.READ_EXTERNAL_STORAGE",
+		storage_write:        "android.permission.WRITE_EXTERNAL_STORAGE",
+		notification_receive: "",
+		photos_read:          "com.google.android.apps.photos.permission.GOOGLE_PHOTOS",
+		reminders_receive:    ""
 	},
 	_ios: {
-		contacts_read:     "",
-		contacts_write:    "",
-		contacts_accounts: "",
-		calendar_read:     "",
-		calendar_write:    "",
-		camera_read:       "",
-		location_coarse:   "",
-		location_fine:     "",
-		microphone_record: "",
-		phone_state:       "",
-		phone_call:        "",
-		phone_read:        "",
-		phone_write:       "",
-		phone_voicemail:   "",
-		phone_sip:         "",
-		phone_outgoing:    "",
-		sensors_read:      "",
-		sms_send:          "",
-		sms_receive:       "",
-		sms_read:          "",
-		sms_wap:           "",
-		sms_mms:           "",
-		storage_read:      "",
-		storage_write:     ""
+		contacts_read:        "ios.permission.contacts",
+		contacts_write:       "ios.permission.contacts",
+		contacts_accounts:    "ios.permission.contacts",
+		calendar_read:        "ios.permission.calendar",
+		calendar_write:       "ios.permission.calendar",
+		camera_read:          "ios.permission.camera",
+		location_coarse:      "ios.permission.location",
+		location_fine:        "ios.permission.location",
+		microphone_record:    "ios.permission.microphone",
+		phone_state:          "",
+		phone_call:           "",
+		phone_read:           "",
+		phone_write:          "",
+		phone_voicemail:      "",
+		phone_sip:            "",
+		phone_outgoing:       "",
+		sensors_read:         "",
+		sms_send:             "",
+		sms_receive:          "",
+		sms_read:             "",
+		sms_wap:              "",
+		sms_mms:              "",
+		storage_read:         "",
+		storage_write:        "",
+		notification_receive: "ios.permission.notification",
+		photos_read:          "ios.permission.photos",
+		reminders_receive:    "ios.permission.reminders"
 	},
 	_resolve: function(key) {
 		if (forge.is.android()) {
