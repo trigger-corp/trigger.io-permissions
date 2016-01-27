@@ -1,26 +1,74 @@
 #import "permissions_API.h"
 
+#import "JLPermissions/JLCalendarPermission.h"
+#import "JLPermissions/JLCameraPermission.h"
+#import "JLPermissions/JLContactsPermission.h"
+#import "JLPermissions/JLLocationPermission.h"
+#import "JLPermissions/JLMicrophonePermission.h"
+#import "JLPermissions/JLNotificationPermission.h"
+#import "JLPermissions/JLPhotosPermission.h"
+#import "JLPermissions/JLRemindersPermission.h"
+
 @implementation permissions_API
 
-//
-// Here you can implement your API methods which can be called from JavaScript
-// an example method is included below to get you started.
-//
++ (void)check:(ForgeTask*)task permission:(NSString *)permission {
+    [ForgeLog d:[NSString stringWithFormat:@"permissions.check -> %@", permission]];
 
-// This will be callable from JavaScript as 'permissions.showAlert'
-// it will require a parameter called text
-+ (void)showAlert:(ForgeTask*)task text:(NSString *)text {
-	if ([text length] == 0) {
-		[task error:@"You must enter a message"];
-		return;
-	}
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert"
-													message:text
-												   delegate:nil
-										  cancelButtonTitle:@"OK"
-										  otherButtonTitles:nil];
-	[alert show];
-	[task success:nil];
+    JLPermissionsCore* jlpermission = [self resolvePermission:permission];
+    if (jlpermission == NULL) {
+        [task success:[NSNumber numberWithBool:YES]];
+        return;
+    }
+
+    JLAuthorizationStatus status = [jlpermission authorizationStatus];
+    [task success:[NSNumber numberWithBool:status == JLPermissionAuthorized]];
+}
+
+
++ (void)request:(ForgeTask*)task permission:(NSString *)permission {
+    NSDictionary* params = task.params;
+    NSString* rationale = [params objectForKey:@"rationale"];
+
+    [ForgeLog d:[NSString stringWithFormat:@"permissions.request -> %@ -> %@", permission, rationale]];
+
+    [task success:[NSNumber numberWithBool:NO]];
+}
+
+
++ (JLPermissionsCore*)resolvePermission:(NSString*)permission {
+    JLPermissionsCore* ret = NULL;
+    if ([permission isEqualToString:@""]) {
+        [ForgeLog d:[NSString stringWithFormat:@"Permission not supported on iOS:%@", permission]];
+
+    } else if ([permission isEqualToString:@"ios.permission.contacts"]) {
+        ret = [JLContactsPermission sharedInstance];
+
+    } else if ([permission isEqualToString:@"ios.permission.calendar"]) {
+        ret = [JLCalendarPermission sharedInstance];
+
+    } else if ([permission isEqualToString:@"ios.permission.camera"]) {
+        ret = [JLCameraPermission sharedInstance];
+
+    } else if ([permission isEqualToString:@"ios.permission.location"]) {
+        ret = [JLLocationPermission sharedInstance];
+
+    } else if ([permission isEqualToString:@"ios.permission.microphone"]) {
+        ret = [JLMicrophonePermission sharedInstance];
+
+    } else if ([permission isEqualToString:@"ios.permission.notification"]) {
+        ret = [JLNotificationPermission sharedInstance];
+
+    } else if ([permission isEqualToString:@"ios.permission.photos"]) {
+        ret = [JLPhotosPermission sharedInstance];
+
+    } else if ([permission isEqualToString:@"ios.permission.reminder"]) {
+        ret = [JLRemindersPermission sharedInstance];
+
+    } else {
+        [ForgeLog w:[NSString stringWithFormat:@"Unknown permission:%@", permission]];
+    }
+
+    return ret;
 }
 
 @end
