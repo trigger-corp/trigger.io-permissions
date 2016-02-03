@@ -50,6 +50,7 @@ android {
 }
 
 dependencies {
+	compile files("libs/guava-13.0.1.jar")
 	compile "com.android.support:support-v4:" + rootProject.ext.supportLibraryVersion
     vanillaCompile (name:'ForgeCore-vanilla-debug', ext:'aar')
     crosswalkCompile (name:'ForgeCore-crosswalk-debug', ext:'aar')
@@ -65,7 +66,7 @@ repositories{
 task updateModule (dependsOn: ":ForgeModule:assembleRelease") {
     doLast {
         copy {
-            from "build/intermediates/bundles/vanilla/release/classes.jar"
+            from "build/intermediates/bundles/vanilla/debug/classes.jar"
             into "../../../module/android"
             rename { "module.jar" }
         }

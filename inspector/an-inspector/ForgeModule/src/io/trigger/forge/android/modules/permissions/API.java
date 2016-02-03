@@ -12,6 +12,7 @@ import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 
+
 public class API {
 
 	public static void check(final ForgeTask task, @ForgeParam("permission") final String permission) {
@@ -72,12 +73,17 @@ public class API {
 	protected static void showRationale(final ForgeTask task, final String message, final DialogInterface.OnClickListener listener) {
 		task.performUI(new Runnable() {
 			public void run() {
-				new AlertDialog.Builder(ForgeApp.getActivity())
-						.setMessage(message)
-						.setPositiveButton("Okay", listener)
-						.setNegativeButton("No Thanks", listener)
-						.create()
-						.show();
+				try {
+					new AlertDialog.Builder(ForgeApp.getActivity())
+							.setMessage(message)
+							.setPositiveButton("Okay", listener)
+							.setNegativeButton("No Thanks", listener)
+							.create()
+							.show();
+				} catch (Exception e) {
+					ForgeLog.e("Exception: " + e.getLocalizedMessage());
+					task.error("Could not display permissions rationale: " + e.getLocalizedMessage(), "UNEXPECTED_FAILURE", null);
+				}
 			}
 		});
 	}

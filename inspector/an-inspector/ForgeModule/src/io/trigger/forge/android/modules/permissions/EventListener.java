@@ -1,7 +1,6 @@
 package io.trigger.forge.android.modules.permissions;
 
 import io.trigger.forge.android.core.ForgeEventListener;
-//import io.trigger.forge.android.core.ForgeLog;
 
 public class EventListener extends ForgeEventListener {
 
