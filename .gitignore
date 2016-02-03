@@ -37,3 +37,13 @@ xcschemes
 .hash
 .DS_Store
 identity.json
+
+inspector/an-inspector/.gradle/
+inspector/an-inspector/.idea/
+inspector/an-inspector/ForgeModule/ForgeModule.iml
+inspector/an-inspector/ForgeModule/build/
+inspector/an-inspector/an-inspector.iml
+inspector/an-inspector/build/
+inspector/an-inspector/gradle/
+inspector/an-inspector/gradlew
+inspector/an-inspector/gradlew.bat
