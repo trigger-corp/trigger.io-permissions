@@ -52,6 +52,11 @@ typedef void (^NotificationAuthorizationHandler)(NSString *__nullable deviceID,
 - (JLAuthorizationStatus)authorizationStatus;
 
 /**
+ * Override to perform the authorization call
+ */
+- (void)authorize:(AuthorizationHandler)completion;
+
+/**
  * Displays a dialog telling the user how to re-enable the permission in
  * the Settings application
  */

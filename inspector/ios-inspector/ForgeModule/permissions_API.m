@@ -26,12 +26,31 @@
 
 
 + (void)request:(ForgeTask*)task permission:(NSString *)permission {
+
+    JLPermissionsCore* jlpermission = [self resolvePermission:permission];
+    if (jlpermission == NULL) {
+        [task success:[NSNumber numberWithBool:YES]];
+        return;
+    }
+
+    if ([jlpermission authorizationStatus] == JLPermissionAuthorized) {
+        [task success:[NSNumber numberWithBool:YES]];
+        return;
+    }
+
     NSDictionary* params = task.params;
     NSString* rationale = [params objectForKey:@"rationale"];
 
     [ForgeLog d:[NSString stringWithFormat:@"permissions.request -> %@ -> %@", permission, rationale]];
 
-    [task success:[NSNumber numberWithBool:NO]];
+    [jlpermission authorize:^(BOOL granted, NSError * _Nullable error) {
+        if (error) {
+            [ForgeLog d:[NSString stringWithFormat:@"permissions.check '%@' failed with error: %@", permission, error]];
+            //[task error:[error description] type:@"UNEXPECTED_FAILURE" subtype:nil];
+            //return;
+        }
+        [task success:[NSNumber numberWithBool:granted]];
+    }];
 }
 
 

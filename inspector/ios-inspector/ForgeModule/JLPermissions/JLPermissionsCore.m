@@ -31,11 +31,11 @@
 }
 
 - (NSString *)defaultCancelTitle {
-  return @"Don't Allow";
+  return @"No Thanks";
 }
 
 - (NSString *)defaultGrantTitle {
-  return @"Ok";
+  return @"Okay";
 }
 
 - (NSString *)appName {
@@ -196,6 +196,14 @@
                  reason:[NSString stringWithFormat:@"You must override %@ in a subclass",
                                                    NSStringFromSelector(_cmd)]
                userInfo:nil];
+}
+
+- (void)authorize:(AuthorizationHandler)completion {
+    @throw [NSException
+            exceptionWithName:NSInternalInconsistencyException
+            reason:[NSString stringWithFormat:@"You must override %@ in a subclass",
+                    NSStringFromSelector(_cmd)]
+            userInfo:nil];
 }
 
 #pragma mark - UIAlertViewDelegate
