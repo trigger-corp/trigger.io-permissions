@@ -47,6 +47,13 @@ typedef void (^NotificationAuthorizationHandler)(NSString *__nullable deviceID,
 @property(nonatomic, getter=isExtraAlertEnabled) BOOL extraAlertEnabled;
 
 /**
+ * A NSString property that, if set, will replace the default message shown
+ * before the library actually requests permissions to the system.
+ */
+@property(nonatomic, getter=getRationale) NSString* rationale;
+
+
+/**
  * @return whether or not user has granted access to the calendar
  */
 - (JLAuthorizationStatus)authorizationStatus;

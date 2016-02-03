@@ -22,8 +22,11 @@
 }
 
 - (NSString *)defaultTitle:(NSString *)authorizationType {
-  return [NSString
-      stringWithFormat:@"\"%@\" Would Like to Access Your %@", [self appName], authorizationType];
+    if (self.getRationale != nil) {
+        return self.getRationale;
+    } else {
+        return [NSString stringWithFormat:@"\"%@\" Would Like to Access Your %@", [self appName], authorizationType];
+    }
 }
 
 - (NSString *)defaultMessage {

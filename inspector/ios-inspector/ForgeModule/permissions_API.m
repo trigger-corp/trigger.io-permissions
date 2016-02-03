@@ -12,8 +12,6 @@
 @implementation permissions_API
 
 + (void)check:(ForgeTask*)task permission:(NSString *)permission {
-    [ForgeLog d:[NSString stringWithFormat:@"permissions.check -> %@", permission]];
-
     JLPermissionsCore* jlpermission = [self resolvePermission:permission];
     if (jlpermission == NULL) {
         [task success:[NSNumber numberWithBool:YES]];
@@ -26,7 +24,6 @@
 
 
 + (void)request:(ForgeTask*)task permission:(NSString *)permission {
-
     JLPermissionsCore* jlpermission = [self resolvePermission:permission];
     if (jlpermission == NULL) {
         [task success:[NSNumber numberWithBool:YES]];
@@ -40,10 +37,12 @@
 
     NSDictionary* params = task.params;
     NSString* rationale = [params objectForKey:@"rationale"];
-
-    [ForgeLog d:[NSString stringWithFormat:@"permissions.request -> %@ -> %@", permission, rationale]];
+    if (rationale != nil) {
+        [jlpermission setRationale:rationale];
+    }
 
     [jlpermission authorize:^(BOOL granted, NSError * _Nullable error) {
+        [jlpermission setRationale:nil]; // reset rationale
         if (error) {
             [ForgeLog d:[NSString stringWithFormat:@"permissions.check '%@' failed with error: %@", permission, error]];
             //[task error:[error description] type:@"UNEXPECTED_FAILURE" subtype:nil];
@@ -84,7 +83,7 @@
         ret = [JLRemindersPermission sharedInstance];
 
     } else {
-        [ForgeLog w:[NSString stringWithFormat:@"Unknown permission:%@", permission]];
+        [ForgeLog w:[NSString stringWithFormat:@"Requested unknown permission:%@", permission]];
     }
 
     return ret;
