@@ -23,7 +23,9 @@ asyncTest("Sanity check permissions database", 2, function() {
 				broken.push(entry + " -> " + permission);
 				return;
 			}
-			if (forge.is.android() && !permission.startsWith("android.permission.")) {
+			if (forge.is.android() && !(permission.startsWith("android.permission.") || 
+										permission.startsWith("com.android.") ||
+										permission.startsWith("com.google."))) {
 				broken.push("android: " + entry + " -> " + permission);
 			} else if (forge.is.ios() && !permission.startsWith("ios.permission.")) {
 				broken.push("ios: " + entry + " -> " + permission);
@@ -64,6 +66,59 @@ asyncTest("Test forge.permissions.check", 1, function () {
 			ok(true, "Permission check shows granted.");
 		}
 		start();
+	}, function () {
+		ok(false, "API method returned failure");
+		start();
+	});
+});
+
+// non-existent permissions should always return true if we can catch them in module.js
+asyncTest("Test non-existent permissions in module javascript", 2, function () {
+	var permission = "this.does.not.exist.anywhere";
+	forge.permissions.check(permission, function (granted) {
+		if (granted) {
+			ok(true, "Non-existent permission check shows granted.");
+			forge.permissions.request(permission, function (granted) {
+				if (granted) {
+					ok(true, "Non-existent permission request shows granted.");
+					start();
+				} else {
+					ok(false, "Non-existent permission request shows denied.");
+					start();
+				}
+			}, function () {
+				ok(false, "API method returned failure");
+			});
+		} else {
+			ok(false, "Non-existent permission check shows denied.");
+			start();
+		}
+	}, function () {
+		ok(false, "API method returned failure");
+		start();
+	});
+});
+
+asyncTest("Test non-existent permissions in native module", 2, function () {
+	var permission = forge.permissions.test.nonexistent;
+	forge.permissions.check(permission, function (granted) {
+		if (!granted) {
+			ok(true, "Non-existent permission check shows denied.");
+			forge.permissions.request(permission, function (granted) {
+				if (!granted) {
+					ok(true, "Non-existent permission request shows denied.");
+					start();
+				} else {
+					ok(false, "Non-existent permission request shows granted.");
+					start();
+				}
+			}, function () {
+				ok(false, "API method returned failure");
+			});
+		} else {
+			ok(false, "Non-existent permission check shows granted.");
+			start();
+		}
 	}, function () {
 		ok(false, "API method returned failure");
 		start();

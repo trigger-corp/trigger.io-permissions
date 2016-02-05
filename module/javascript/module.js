@@ -88,6 +88,9 @@ forge.permissions = {
 	reminders: {
 		receive: "reminders_receive"
 	},
+	test: {
+		nonexistent: "test_nonexistent"
+	},
 
 	// map permission to platform
 	_android: {
@@ -104,7 +107,7 @@ forge.permissions = {
 		phone_call:           "android.permission.CALL_PHONE",
 		phone_read:           "android.permission.READ_CALL_LOG",
 		phone_write:          "android.permission.WRITE_CALL_LOG",
-		phone_voicemail:      "android.permission.ADD_VOICEMAIL",
+		phone_voicemail:      "com.android.voicemail.permission.ADD_VOICEMAIL",
 		phone_sip:            "android.permission.USE_SIP",
 		phone_outgoing:       "android.permission.PROCESS_OUTGOING_CALLS",
 		sensors_read:         "android.permission.BODY_SENSORS",
@@ -117,7 +120,8 @@ forge.permissions = {
 		storage_write:        "android.permission.WRITE_EXTERNAL_STORAGE",
 		notification_receive: "",
 		photos_read:          "com.google.android.apps.photos.permission.GOOGLE_PHOTOS",
-		reminders_receive:    ""
+		reminders_receive:    "",
+		test_nonexistent:     "android.permission.DOES_NOT_EXIST",
 	},
 	_ios: {
 		contacts_read:        "ios.permission.contacts",
@@ -146,13 +150,22 @@ forge.permissions = {
 		storage_write:        "",
 		notification_receive: "ios.permission.notification",
 		photos_read:          "ios.permission.photos",
-		reminders_receive:    "ios.permission.reminders"
+		reminders_receive:    "ios.permission.reminders",
+		test_nonexistent:     "ios.permission.does_not_exist",
 	},
 	_resolve: function(key) {
 		if (forge.is.android()) {
-			return forge.permissions._android[key];
+			if (key in forge.permissions._android) {
+				return forge.permissions._android[key];
+			} else {
+				return "";
+			}
 		} else if (forge.is.ios()) {
-			return forge.permissions._ios[key];
+			if (key in forge.permissions._ios) {
+				return forge.permissions._ios[key];
+			} else {
+				return "";
+			}
 		} else {
 			return "";
 		}

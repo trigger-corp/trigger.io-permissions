@@ -97,7 +97,7 @@ The following permissions are available and mapped to Android and iOS as follows
 | forge.permissions.phone.call           | android.permission.CALL_PHONE             | n/a          |
 | forge.permissions.phone.read           | android.permission.READ_CALL_LOG          | n/a          |
 | forge.permissions.phone.write          | android.permission.WRITE_CALL_LOG         | n/a          |
-| forge.permissions.phone.voicemail      | android.permission.ADD_VOICEMAIL          | n/a          |
+| forge.permissions.phone.voicemail      | com.android.voicemail.permission.ADD_VOICEMAIL | n/a |
 | forge.permissions.phone.sip            | android.permission.USE_SIP                | n/a          |
 | forge.permissions.phone.outgoing       | android.permission.PROCESS_OUTGOING_CALLS | n/a          |
 | forge.permissions.sensors.read         | android.permission.BODY_SENSORS           | n/a          |
