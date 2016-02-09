@@ -52,6 +52,7 @@ android {
 dependencies {
 	compile files("libs/guava-13.0.1.jar")
 	compile "com.android.support:support-v4:" + rootProject.ext.supportLibraryVersion
+	compile "com.android.support:appcompat-v7:" + rootProject.ext.supportLibraryVersion
     vanillaCompile (name:'ForgeCore-vanilla-debug', ext:'aar')
     crosswalkCompile (name:'ForgeCore-crosswalk-debug', ext:'aar')
     compile moduleDependencies()
