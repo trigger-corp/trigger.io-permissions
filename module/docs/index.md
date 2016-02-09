@@ -49,7 +49,7 @@ The ``forge.permissions`` module is designed to give you finer control over the 
 > *  On Android runtime permissions are only available from Marshmallow onwards. On older versions of Android the user has to accept all app permissions during installation so these methods will never present a permissions dialog and simply return `true` for the `function(granted)` callback.
 
 
-**Example:**
+## Example
 
 Let's say your app has a feature that relies on the ``forge.contact` module which needs read permissions for device contacts.
 
@@ -83,6 +83,18 @@ Let's say your app has a feature that relies on the ``forge.contact` module whic
         }, HandleErrorsGracefully);
 		
 	}, HandleErrorsGracefully);
+
+
+## Permissions used by Forge modules
+
+| Module      | Permissions                                                        |
+|-------------|--------------------------------------------------------------------|
+| calendar    | forge.permissions.calendar.read, forge.permissions.calendar.write  |
+| camera      | forge.permissions.camera.read, forge.permissions.storage.write     |
+| contact     | forge.permissions.contacts.read, forge.permissions.contacts.write  |
+| file        | forge.permissions.camera.read, forge.permissions.storage.read, forge.permissions.storage.write, forge.permissions.photos.read |
+| geolocation | forge.permissions.location.coarse, forge.permissions.location.fine |
+
 
 ## Available Permissions
 
