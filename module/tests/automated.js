@@ -10,7 +10,8 @@ asyncTest("Sanity check permissions database", 2, function() {
 	assert.ok(Object.keys(android).length === Object.keys(ios).length);
 
 	// check that all db entries map to a permission
-	var groups = ["contacts", "calendar", "camera", "location", "microphone", "phone", "sensors", "sms", "storage"];
+	var groups = ["calendar", "camera", "contacts", "location", "microphone", "notification", "phone", 
+				  "photos", "reminders", "sensors", "sms", "storage"];
 	var broken = [];
 	groups.forEach(function (group) {
 		Object.keys(forge.permissions[group]).forEach(function (entry) {
@@ -23,11 +24,11 @@ asyncTest("Sanity check permissions database", 2, function() {
 				broken.push(entry + " -> " + permission);
 				return;
 			}
-			if (forge.is.android() && !(permission.startsWith("android.permission.") || 
-										permission.startsWith("com.android.") ||
-										permission.startsWith("com.google."))) {
+			if (forge.is.android() && !(permission.indexOf("android.permission.") === 0 || 
+										permission.indexOf("com.android.") === 0 ||
+										permission.indexOf("com.google.") === 0)) {
 				broken.push("android: " + entry + " -> " + permission);
-			} else if (forge.is.ios() && !permission.startsWith("ios.permission.")) {
+			} else if (forge.is.ios() && permission.indexOf("ios.permission.") !== 0) {
 				broken.push("ios: " + entry + " -> " + permission);
 			}
 		});
@@ -99,6 +100,7 @@ asyncTest("Test non-existent permissions in module javascript", 2, function () {
 	});
 });
 
+// TODO check consistency with iOS!!!
 asyncTest("Test non-existent permissions in native module", 2, function () {
 	var permission = forge.permissions.test.nonexistent;
 	forge.permissions.check(permission, function (granted) {

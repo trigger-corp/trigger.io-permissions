@@ -14,7 +14,7 @@
 + (void)check:(ForgeTask*)task permission:(NSString *)permission {
     JLPermissionsCore* jlpermission = [self resolvePermission:permission];
     if (jlpermission == NULL) {
-        [task success:[NSNumber numberWithBool:YES]];
+        [task success:[NSNumber numberWithBool:NO]];
         return;
     }
 
@@ -26,7 +26,7 @@
 + (void)request:(ForgeTask*)task permission:(NSString *)permission {
     JLPermissionsCore* jlpermission = [self resolvePermission:permission];
     if (jlpermission == NULL) {
-        [task success:[NSNumber numberWithBool:YES]];
+        [task success:[NSNumber numberWithBool:NO]];
         return;
     }
 

@@ -84,15 +84,16 @@ The following permissions are available and mapped to Android and iOS as follows
 
 | Permission                             | Android                                   | iOS          |
 |----------------------------------------|-------------------------------------------|--------------|
-| forge.permissions.contacts.read        | android.permission.READ_CONTACTS          | contacts     |
-| forge.permissions.contacts.write       | android.permission.WRITE_CONTACTS         | contacts     |
-| forge.permissions.contacts.accounts    | android.permission.GET_ACCOUNTS           | contacts     |
 | forge.permissions.calendar.read        | android.permission.READ_CALENDAR          | calendar     |
 | forge.permissions.calendar.write       | android.permission.WRITE_CALENDAR         | calendar     |
 | forge.permissions.camera.read          | android.permission.CAMERA                 | camera       |
+| forge.permissions.contacts.read        | android.permission.READ_CONTACTS          | contacts     |
+| forge.permissions.contacts.write       | android.permission.WRITE_CONTACTS         | contacts     |
+| forge.permissions.contacts.accounts    | android.permission.GET_ACCOUNTS           | contacts     |
 | forge.permissions.location.coarse      | android.permission.ACCESS_COARSE_LOCATION | location     |
 | forge.permissions.location.fine        | android.permission.ACCESS_FINE_LOCATION   | location     |
 | forge.permissions.microphone.record    | android.permission.RECORD_AUDIO           | microphone   |
+| forge.permissions.notification.receive | n/a                                       | notification |
 | forge.permissions.phone.state          | android.permission.READ_PHONE_STATE       | n/a          |
 | forge.permissions.phone.call           | android.permission.CALL_PHONE             | n/a          |
 | forge.permissions.phone.read           | android.permission.READ_CALL_LOG          | n/a          |
@@ -100,6 +101,8 @@ The following permissions are available and mapped to Android and iOS as follows
 | forge.permissions.phone.voicemail      | com.android.voicemail.permission.ADD_VOICEMAIL | n/a |
 | forge.permissions.phone.sip            | android.permission.USE_SIP                | n/a          |
 | forge.permissions.phone.outgoing       | android.permission.PROCESS_OUTGOING_CALLS | n/a          |
+| forge.permissions.photos.read          | com.google.android.apps.photos.permission.GOOGLE_PHOTOS | photos |
+| forge.permissions.reminders.receive    | n/a                                       | reminders    |
 | forge.permissions.sensors.read         | android.permission.BODY_SENSORS           | n/a          |
 | forge.permissions.sms.send             | android.permission.SEND_SMS               | n/a          |
 | forge.permissions.sms.receive          | android.permission.RECEIVE_SMS            | n/a          |
@@ -108,9 +111,6 @@ The following permissions are available and mapped to Android and iOS as follows
 | forge.permissions.sms.mms              | android.permission.RECEIVE_MMS            | n/a          |
 | forge.permissions.storage.read         | android.permission.READ_EXTERNAL_STORAGE  | n/a          |
 | forge.permissions.storage.write        | android.permission.WRITE_EXTERNAL_STORAGE | n/a          |
-| forge.permissions.notification.receive | n/a                                       | notification |
-| forge.permissions.photos.read          | com.google.android.apps.photos.permission.GOOGLE_PHOTOS | photos |
-| forge.permissions.reminders.receive    | n/a                                       | reminders    |
 
 
 ## Notes

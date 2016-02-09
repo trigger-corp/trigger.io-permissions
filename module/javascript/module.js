@@ -36,11 +36,6 @@ forge.permissions = {
     },
 
 	// available permissions
-	contacts: {
-		read: "contacts_read",
-		write: "contacts_write",
-		accounts: "contacts_accounts"
-	},
 	calendar: {
 		read: "calendar_read",
 		write: "calendar_write",
@@ -48,12 +43,20 @@ forge.permissions = {
 	camera: {
 		read: "camera_read"
 	},
+	contacts: {
+		read: "contacts_read",
+		write: "contacts_write",
+		accounts: "contacts_accounts"
+	},
 	location: {
 		coarse: "location_coarse",
 		fine: "location_fine"
 	},
 	microphone: {
 		record: "microphone_record"
+	},
+	notification: {
+		receive: "notification_receive"
 	},
 	phone: {
 		state:     "phone_state",
@@ -63,6 +66,12 @@ forge.permissions = {
 		voicemail: "phone_voicemail",
 		sip:       "phone_sip",
 		outgoing:  "phone_outgoing"
+	},
+	photos: {
+		"read": "photos_read"
+	},
+	reminders: {
+		receive: "reminders_receive"
 	},
 	sensors: {
 		read: "sensors_read"
@@ -77,16 +86,6 @@ forge.permissions = {
 	storage: {
 		read: "storage_read",
 		write: "storage_write"
-	},
-
-	notification: {
-		receive: "notification_receive"
-	},
-	photos: {
-		"read": "photos_read"
-	},
-	reminders: {
-		receive: "reminders_receive"
 	},
 	test: {
 		nonexistent: "test_nonexistent"
