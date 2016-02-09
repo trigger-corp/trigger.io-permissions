@@ -1,6 +1,7 @@
 ``permissions``: manage runtime permission requests in your app
 ===============================================================
 
+
 The ``forge.permissions`` module gives you custom control over when and how your app makes native permission requests.
 
 By default, all forge module API's will always make a request to the user for any permissions they need when called. 
@@ -11,6 +12,11 @@ An additional problem is that once a permission request has been denied the user
 
 The ``forge.permissions`` module is designed to give you finer control over the flow of your app when a permission request is required and makes it less likely that a user will permanently lose the ability to grant a permission in the future.
 
+----
+
+::Important:: Platform version 2.4.1 or higher is required to use this module.
+
+----
 
 ## API
 
