@@ -16,6 +16,8 @@ The ``forge.permissions`` module is designed to give you finer control over the 
 
 ::Important:: Platform version 2.4.1 or higher is required to use this module.
 
+Check out [Discover Trigger.io Forge v2.4: Runtime App Permissions](http://trigger.io/cross-platform-application-development-blog/2016/02/24/discover-trigger-io-forge-v2-4-runtime-app-permissions/) for a detailed overview of this module!
+
 ----
 
 ## API
