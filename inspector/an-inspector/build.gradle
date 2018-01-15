@@ -19,11 +19,17 @@ allprojects {
         maven {
             url 'https://download.01.org/crosswalk/releases/crosswalk/android/maven2'
         }
+        //maven {
+        //    url 'http://xwalk.beevelop.com/crosswalk/releases/crosswalk/android/maven2' // temp workaround for official crosswalk server being down
+        //}
         maven {
             url "https://maven.google.com"
         }
         maven {
             url "http://dl.bintray.com/openid/net.openid"
+        }
+        maven {
+            url "https://jitpack.io"
         }
         flatDir {
             dirs 'ForgeModule/libs'

@@ -49,11 +49,11 @@
 
 - (void)authorize:(AuthorizationHandler)completion {
   NSString *title =
-      [NSString stringWithFormat:@"\"%@\" Would Like to Use Your Current Location", [self appName]];
+      [NSString stringWithFormat:@"Allow \"%@\" to access your location while you are using the app?", [self appName]];
   [self authorizeWithTitle:title
-                   message:[self defaultMessage]
-               cancelTitle:[self defaultCancelTitle]
-                grantTitle:[self defaultGrantTitle]
+                   message:self.getRationale
+               cancelTitle:@"Don't Allow"
+                grantTitle:@"Allow"
                 completion:completion];
 }
 

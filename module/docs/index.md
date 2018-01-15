@@ -4,7 +4,7 @@
 
 The ``forge.permissions`` module gives you custom control over when and how your app makes native permission requests.
 
-By default, all forge module API's will always make a request to the user for any permissions they need when called. 
+By default, all forge module API's will always make a request to the user for any permissions they need when called.
 
 While this has the benefit of being automatic and not requiring any work on your part it has the downside that it can quickly get quite complex to handle situations where the user denied those permissions requests.
 
@@ -44,10 +44,10 @@ Check out [Discover Trigger.io Forge v2.4: Runtime App Permissions](http://trigg
 !platforms: iOS, Android
 !param: error `function(content)` called with details of any error which may occur
 
-> ::Notes:: 
-> 
-> *  On Android the rationale will only be displayed if the user has previously denied the request. 
-> *  To alleviate the situation where users will never be asked again for a permission, the request is presented as two consecutive dialogs with the real permission request only being made on the second dialog. 
+> ::Notes::
+>
+> *  On Android the rationale will only be displayed if the user has previously denied the request.
+> *  To alleviate the situation where users will never be asked again for a permission, the request is presented as two consecutive dialogs with the real permission request only being made on the second dialog.
 > *  On Android runtime permissions are only available from Marshmallow onwards. On older versions of Android the user has to accept all app permissions during installation so these methods will never present a permissions dialog and simply return `true` for the `function(granted)` callback.
 
 
@@ -55,9 +55,9 @@ Check out [Discover Trigger.io Forge v2.4: Runtime App Permissions](http://trigg
 
 Let's say your app has a feature that relies on the ``forge.contact` module which needs read permissions for device contacts.
 
-	var rationale = "Grant appname to access your contacts?\n"
+    var rationale = "Grant appname to access your contacts?\n"
                   + "This allows CoolApp to let you choose the "
-				  + "friends you'd like to share your photos with.";
+                  + "friends you'd like to share your photos with.";
 
     function SomeAppFeatureRequiringPermissions() {
         forge.contact.select(function (contact) {
@@ -65,26 +65,26 @@ Let's say your app has a feature that relies on the ``forge.contact` module whic
         }, error("contact.select"));
     }
 
-	function HandlePermissionDenialGracefully() {
-	    ...
-	}
+    function HandlePermissionDenialGracefully() {
+        ...
+    }
 
-	function HandleErrorsGracefully(e) {
-	    ....
-	}
+    function HandleErrorsGracefully(e) {
+        ....
+    }
 
     forge.permissions.check(forge.permissions.contacts.read, function (granted) {
-	    if (granted) {
-		   return SomeAppFeatureRequiringPermissions();
-		}
+        if (granted) {
+           return SomeAppFeatureRequiringPermissions();
+        }
         forge.permissions.request(forge.permissions.contacts.read, rationale, function (granted) {
             if (granted) {
                 return SomeAppFeatureRequiringPermissions();
             }
-			HandlePermissionDenialGracefully();
+            HandlePermissionDenialGracefully();
         }, HandleErrorsGracefully);
-		
-	}, HandleErrorsGracefully);
+
+    }, HandleErrorsGracefully);
 
 
 ## Permissions used by Forge modules
