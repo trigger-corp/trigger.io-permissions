@@ -1,8 +1,8 @@
 {
-    "changes": "* Updated geolocation permission request for iOS 11",
+    "changes": "* Fixed: iOS app store rejections caused by unused permission API's",
     "description": "Manage runtime permission requests in your app",
-    "min_platform_version": "v2.6.4",
+    "min_platform_version": "v2.6.9",
     "namespace": "permissions",
-    "platform_version": "v2.6.4",
-    "version": "1.1"
+    "platform_version": "v2.6.9",
+    "version": "2.0"
 }

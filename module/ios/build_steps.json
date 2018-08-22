@@ -1,6 +1,0 @@
-[
-    { "do": { "add_ios_system_framework": "EventKit.framework" } },
-	{ "do": { "add_ios_system_framework": "AddressBook.framework" } },
-	{ "do": { "add_ios_system_framework": "AVFoundation.framework" } },
-	{ "do": { "add_ios_system_framework": "CoreLocation.framework" } }
-]

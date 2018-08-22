@@ -1,13 +1,6 @@
 #import "permissions_API.h"
 
-#import "JLPermissions/JLCalendarPermission.h"
-#import "JLPermissions/JLCameraPermission.h"
-#import "JLPermissions/JLContactsPermission.h"
-#import "JLPermissions/JLLocationPermission.h"
-#import "JLPermissions/JLMicrophonePermission.h"
 #import "JLPermissions/JLNotificationPermission.h"
-#import "JLPermissions/JLPhotosPermission.h"
-#import "JLPermissions/JLRemindersPermission.h"
 
 @implementation permissions_API
 
@@ -45,8 +38,6 @@
         [jlpermission setRationale:nil]; // reset rationale
         if (error) {
             [ForgeLog d:[NSString stringWithFormat:@"permissions.check '%@' failed with error: %@", permission, error]];
-            //[task error:[error description] type:@"UNEXPECTED_FAILURE" subtype:nil];
-            //return;
         }
         [task success:[NSNumber numberWithBool:granted]];
     }];
@@ -58,29 +49,8 @@
     if ([permission isEqualToString:@""]) {
         [ForgeLog d:[NSString stringWithFormat:@"Permission not supported on iOS:%@", permission]];
 
-    } else if ([permission isEqualToString:@"ios.permission.contacts"]) {
-        ret = [JLContactsPermission sharedInstance];
-
-    } else if ([permission isEqualToString:@"ios.permission.calendar"]) {
-        ret = [JLCalendarPermission sharedInstance];
-
-    } else if ([permission isEqualToString:@"ios.permission.camera"]) {
-        ret = [JLCameraPermission sharedInstance];
-
-    } else if ([permission isEqualToString:@"ios.permission.location"]) {
-        ret = [JLLocationPermission sharedInstance];
-
-    } else if ([permission isEqualToString:@"ios.permission.microphone"]) {
-        ret = [JLMicrophonePermission sharedInstance];
-
     } else if ([permission isEqualToString:@"ios.permission.notification"]) {
         ret = [JLNotificationPermission sharedInstance];
-
-    } else if ([permission isEqualToString:@"ios.permission.photos"]) {
-        ret = [JLPhotosPermission sharedInstance];
-
-    } else if ([permission isEqualToString:@"ios.permission.reminder"]) {
-        ret = [JLRemindersPermission sharedInstance];
 
     } else {
         [ForgeLog w:[NSString stringWithFormat:@"Requested unknown permission:%@", permission]];

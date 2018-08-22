@@ -5,7 +5,7 @@
 //  Copyright (c) 2014 Joe Laws. All rights reserved.
 //
 
-#import "JLPermissionsCore.h"
+#import <ForgeCore/JLPermissionsCore.h>
 NS_ASSUME_NONNULL_BEGIN
 @interface JLNotificationPermission : JLPermissionsCore
 

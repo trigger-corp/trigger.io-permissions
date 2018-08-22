@@ -1,6 +1,14 @@
 {
-	"this_module": {
-		"config": {}
-	},
-	"modules": {}
+    "this_module": {
+        "config": {}
+    },
+    "modules": {
+        "geolocation": {
+            "disabled": true,
+            "version": "2.8",
+            "config": {
+                "usage_description": "geolocation.usage_description"
+            }
+        }
+    }
 }

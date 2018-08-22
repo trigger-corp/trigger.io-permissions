@@ -7,15 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		71444FC41C59008800822248 /* JLCalendarPermission.m in Sources */ = {isa = PBXBuildFile; fileRef = 71444FB21C59008800822248 /* JLCalendarPermission.m */; };
-		71444FC51C59008800822248 /* JLCameraPermission.m in Sources */ = {isa = PBXBuildFile; fileRef = 71444FB41C59008800822248 /* JLCameraPermission.m */; };
-		71444FC61C59008800822248 /* JLContactsPermission.m in Sources */ = {isa = PBXBuildFile; fileRef = 71444FB61C59008800822248 /* JLContactsPermission.m */; };
-		71444FC71C59008800822248 /* JLLocationPermission.m in Sources */ = {isa = PBXBuildFile; fileRef = 71444FB81C59008800822248 /* JLLocationPermission.m */; };
-		71444FC81C59008800822248 /* JLMicrophonePermission.m in Sources */ = {isa = PBXBuildFile; fileRef = 71444FBA1C59008800822248 /* JLMicrophonePermission.m */; };
 		71444FC91C59008800822248 /* JLNotificationPermission.m in Sources */ = {isa = PBXBuildFile; fileRef = 71444FBC1C59008800822248 /* JLNotificationPermission.m */; };
-		71444FCA1C59008800822248 /* JLPermissionsCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 71444FBF1C59008800822248 /* JLPermissionsCore.m */; };
-		71444FCB1C59008800822248 /* JLPhotosPermission.m in Sources */ = {isa = PBXBuildFile; fileRef = 71444FC11C59008800822248 /* JLPhotosPermission.m */; };
-		71444FCC1C59008800822248 /* JLRemindersPermission.m in Sources */ = {isa = PBXBuildFile; fileRef = 71444FC31C59008800822248 /* JLRemindersPermission.m */; };
 		B31B6D5215C13D5200854074 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B31B6D5115C13D5200854074 /* Foundation.framework */; };
 		B31B6D6F15C1467100854074 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B31B6D6E15C1467100854074 /* CoreFoundation.framework */; };
 		B37C3A5D162717A200B50A60 /* ForgeCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B37C3A5C162717A200B50A60 /* ForgeCore.framework */; };
@@ -28,25 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		71444FB11C59008800822248 /* JLCalendarPermission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLCalendarPermission.h; sourceTree = "<group>"; };
-		71444FB21C59008800822248 /* JLCalendarPermission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLCalendarPermission.m; sourceTree = "<group>"; };
-		71444FB31C59008800822248 /* JLCameraPermission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLCameraPermission.h; sourceTree = "<group>"; };
-		71444FB41C59008800822248 /* JLCameraPermission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLCameraPermission.m; sourceTree = "<group>"; };
-		71444FB51C59008800822248 /* JLContactsPermission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLContactsPermission.h; sourceTree = "<group>"; };
-		71444FB61C59008800822248 /* JLContactsPermission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLContactsPermission.m; sourceTree = "<group>"; };
-		71444FB71C59008800822248 /* JLLocationPermission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLLocationPermission.h; sourceTree = "<group>"; };
-		71444FB81C59008800822248 /* JLLocationPermission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLLocationPermission.m; sourceTree = "<group>"; };
-		71444FB91C59008800822248 /* JLMicrophonePermission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLMicrophonePermission.h; sourceTree = "<group>"; };
-		71444FBA1C59008800822248 /* JLMicrophonePermission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLMicrophonePermission.m; sourceTree = "<group>"; };
 		71444FBB1C59008800822248 /* JLNotificationPermission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLNotificationPermission.h; sourceTree = "<group>"; };
 		71444FBC1C59008800822248 /* JLNotificationPermission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLNotificationPermission.m; sourceTree = "<group>"; };
-		71444FBD1C59008800822248 /* JLPermissionsCore+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JLPermissionsCore+Internal.h"; sourceTree = "<group>"; };
-		71444FBE1C59008800822248 /* JLPermissionsCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLPermissionsCore.h; sourceTree = "<group>"; };
-		71444FBF1C59008800822248 /* JLPermissionsCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLPermissionsCore.m; sourceTree = "<group>"; };
-		71444FC01C59008800822248 /* JLPhotosPermission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLPhotosPermission.h; sourceTree = "<group>"; };
-		71444FC11C59008800822248 /* JLPhotosPermission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLPhotosPermission.m; sourceTree = "<group>"; };
-		71444FC21C59008800822248 /* JLRemindersPermission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLRemindersPermission.h; sourceTree = "<group>"; };
-		71444FC31C59008800822248 /* JLRemindersPermission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLRemindersPermission.m; sourceTree = "<group>"; };
 		B31B6D4E15C13D5200854074 /* libForgeModule.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libForgeModule.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B31B6D5115C13D5200854074 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B31B6D6D15C1467100854074 /* permissions.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = permissions.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,25 +65,8 @@
 		71444FB01C59008800822248 /* JLPermissions */ = {
 			isa = PBXGroup;
 			children = (
-				71444FB11C59008800822248 /* JLCalendarPermission.h */,
-				71444FB21C59008800822248 /* JLCalendarPermission.m */,
-				71444FB31C59008800822248 /* JLCameraPermission.h */,
-				71444FB41C59008800822248 /* JLCameraPermission.m */,
-				71444FB51C59008800822248 /* JLContactsPermission.h */,
-				71444FB61C59008800822248 /* JLContactsPermission.m */,
-				71444FB71C59008800822248 /* JLLocationPermission.h */,
-				71444FB81C59008800822248 /* JLLocationPermission.m */,
-				71444FB91C59008800822248 /* JLMicrophonePermission.h */,
-				71444FBA1C59008800822248 /* JLMicrophonePermission.m */,
 				71444FBB1C59008800822248 /* JLNotificationPermission.h */,
 				71444FBC1C59008800822248 /* JLNotificationPermission.m */,
-				71444FBD1C59008800822248 /* JLPermissionsCore+Internal.h */,
-				71444FBE1C59008800822248 /* JLPermissionsCore.h */,
-				71444FBF1C59008800822248 /* JLPermissionsCore.m */,
-				71444FC01C59008800822248 /* JLPhotosPermission.h */,
-				71444FC11C59008800822248 /* JLPhotosPermission.m */,
-				71444FC21C59008800822248 /* JLRemindersPermission.h */,
-				71444FC31C59008800822248 /* JLRemindersPermission.m */,
 			);
 			path = JLPermissions;
 			sourceTree = "<group>";
@@ -228,16 +186,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3CC61F21716ECB500A1A8EF /* permissions_API.m in Sources */,
-				71444FC41C59008800822248 /* JLCalendarPermission.m in Sources */,
 				B3CC61F41716ECBB00A1A8EF /* permissions_EventListener.m in Sources */,
 				71444FC91C59008800822248 /* JLNotificationPermission.m in Sources */,
-				71444FC81C59008800822248 /* JLMicrophonePermission.m in Sources */,
-				71444FCB1C59008800822248 /* JLPhotosPermission.m in Sources */,
-				71444FCA1C59008800822248 /* JLPermissionsCore.m in Sources */,
-				71444FCC1C59008800822248 /* JLRemindersPermission.m in Sources */,
-				71444FC51C59008800822248 /* JLCameraPermission.m in Sources */,
-				71444FC61C59008800822248 /* JLContactsPermission.m in Sources */,
-				71444FC71C59008800822248 /* JLLocationPermission.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

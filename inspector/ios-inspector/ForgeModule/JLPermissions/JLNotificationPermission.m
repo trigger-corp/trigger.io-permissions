@@ -7,7 +7,7 @@
 
 #import "JLNotificationPermission.h"
 
-#import "JLPermissionsCore+Internal.h"
+#import <ForgeCore/JLPermissionsCore+Internal.h>
 
 #define kJLDeviceToken @"JLDeviceToken"
 #define kJLAskedForNotificationPermission @"JLAskedForNotificationPermission"
