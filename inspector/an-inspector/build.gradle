@@ -1,27 +1,25 @@
 buildscript {
     repositories {
+        google()
         jcenter()
-        //mavenCentral()
         maven {
             url "https://maven.google.com"
         }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.3'
+        classpath "com.android.tools.build:gradle:3.4.2"
+        classpath "com.google.gms:google-services:4.3.0"
     }
-    System.properties['com.android.build.gradle.overrideVersionCheck'] = 'true'
+    System.properties["com.android.build.gradle.overrideVersionCheck"] = "true"
 }
 
 allprojects {
     repositories {
+        google()
         jcenter()
-        //mavenCentral()
         maven {
-            url 'https://download.01.org/crosswalk/releases/crosswalk/android/maven2'
+            url "https://download.01.org/crosswalk/releases/crosswalk/android/maven2"
         }
-        //maven {
-        //    url 'http://xwalk.beevelop.com/crosswalk/releases/crosswalk/android/maven2' // temp workaround for official crosswalk server being down
-        //}
         maven {
             url "https://maven.google.com"
         }
@@ -32,23 +30,26 @@ allprojects {
             url "https://jitpack.io"
         }
         flatDir {
-            dirs 'ForgeModule/libs'
+            dirs "ForgeModule/libs"
         }
     }
 }
 
 ext {
-    compileSdkVersion = 26
-    buildToolsVersion = "26.0.1"
-    supportLibraryVersion = "26.0.1"
-    crosswalkVersion = "23.53.589.4"
+    dependencies = [
+        "androidx.legacy:legacy-support-v4:1.0.0",
+        "com.google.guava:guava:28.0-android",
+    ]
+
+    buildToolsVersion = "29.0.0"
 
     minSdkVersion = moduleMinSdkVersion() ?: 14
-    targetSdkVersion = 26
+    compileSdkVersion = 29
+    targetSdkVersion = 29
 
     compileOptions = {
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     debug = {
@@ -56,14 +57,21 @@ ext {
         minifyEnabled false
         shrinkResources false
     }
+
     release = {
         debuggable false
         minifyEnabled true
         shrinkResources false
     }
+
+    crosswalkVersion = "23.53.589.4"
 }
 
-task getHomeDir << {
+wrapper {
+    gradleVersion = "5.4.1"
+}
+
+task getHomeDir doLast {
     println gradle.gradleHomeDir
 }
 
@@ -74,6 +82,17 @@ def moduleDependencies() {
         def jsonSlurper = new JsonSlurper()
         def config = jsonSlurper.parseText(f.text)
         config["dependencies"] ?: []
+    } else {
+        []
+    }
+}
+
+def moduleGradlePlugins() {
+    def f = new File("ForgeInspector/gradle.json")
+    if (f.exists()) {
+        def jsonSlurper = new JsonSlurper()
+        def config = jsonSlurper.parseText(f.text)
+        config["gradlePlugins"] ?: []
     } else {
         []
     }
@@ -101,6 +120,7 @@ def moduleManifestPlaceholders() {
     }
 }
 
+
 def moduleMinSdkVersion() {
     def f = new File("ForgeInspector/gradle.json")
     if (f.exists()) {
@@ -111,3 +131,29 @@ def moduleMinSdkVersion() {
         null
     }
 }
+
+def moduleResConfigs() {
+    def f = new File("ForgeInspector/gradle.json")
+    if (f.exists()) {
+        def jsonSlurper = new JsonSlurper()
+        def config = jsonSlurper.parseText(f.text)
+        config["resConfigs"] ?: []
+    } else {
+        []
+    }
+}
+
+// Force Android support library version for Crosswalk builds
+// configurations.all { conf ->
+//     if (conf.name.contains("crosswalk")) {
+//         println "Munging support library for: " + conf.name
+//         resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+//             def requested = details.requested
+//             if (requested.group == "com.android.support") {
+//                 if (!requested.name.startsWith("multidex")) {
+//                     details.useVersion rootProject.ext.supportLibraryVersion
+//                 }
+//             }
+//         }
+//     }
+// }
