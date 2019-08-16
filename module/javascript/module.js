@@ -34,14 +34,8 @@ forge.permissions = {
     },
 
     request: function (permission, rationale, success, error) {
-        permission = forge.permissions._resolve(permission);
-        if (permission === "") { // permission not supported on platform
-            success(true);
-            return;
-        }
-
         var options = {
-            permission: permission
+            permission: forge.permissions._resolve(permission)
         };
 
         if (typeof rationale === "function") {
