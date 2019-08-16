@@ -5,10 +5,15 @@
     "modules": {
         "geolocation": {
             "disabled": true,
-            "version": "2.8",
+            "version": "2.9",
             "config": {
                 "usage_description": "geolocation.usage_description"
             }
+        }
+    },
+    "core": {
+        "android": {
+            "remote_debugging": true
         }
     }
 }

@@ -1,8 +1,8 @@
 {
-    "changes": "* Fixed: iOS app store rejections caused by unused permission API's",
+    "changes": "* Migrate to AndroidX\n* Fixed: Error when not passing a rationale for a permissions request\n",
     "description": "Manage runtime permission requests in your app",
-    "min_platform_version": "v2.6.9",
+    "min_platform_version": "v2.8.0",
     "namespace": "permissions",
-    "platform_version": "v2.6.9",
-    "version": "2.0"
+    "platform_version": "v2.8.0",
+    "version": "2.1"
 }
