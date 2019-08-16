@@ -89,6 +89,7 @@ asyncTest("Test non-existent permissions in module javascript", 2, function () {
                 }
             }, function () {
                 ok(false, "API method returned failure");
+                start();
             });
         } else {
             ok(false, "Non-existent permission check shows denied.");
