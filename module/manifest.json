@@ -1,8 +1,8 @@
 {
-    "changes": "* Migrate to AndroidX\n* Fixed: Error when not passing a rationale for a permissions request\n",
+    "changes": "* Fixed: Callback does not fire on iOS when requesting notification permissions",
     "description": "Manage runtime permission requests in your app",
-    "min_platform_version": "v2.8.0",
+    "min_platform_version": "v2.8.5",
     "namespace": "permissions",
-    "platform_version": "v2.8.0",
-    "version": "2.1"
+    "platform_version": "v2.8.5",
+    "version": "2.2"
 }

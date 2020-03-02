@@ -46,10 +46,10 @@ NS_ASSUME_NONNULL_BEGIN
  *previously established
  */
 - (void)authorizeWithTitle:(NSString *)messageTitle
-                   message:(NSString *__nullable)message
-               cancelTitle:(NSString *)cancelTitle
-                grantTitle:(NSString *)grantTitle
-                completion:(NotificationAuthorizationHandler)completion;
+message:(NSString *__nullable)message
+cancelTitle:(NSString *)cancelTitle
+grantTitle:(NSString *)grantTitle
+completion:(NotificationAuthorizationHandler)completion;
 
 /**
  *  Removes the apps push notification authorization at the system level and

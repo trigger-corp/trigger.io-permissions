@@ -19,7 +19,7 @@
 + (void)request:(ForgeTask*)task permission:(NSString *)permission {
     JLPermissionsCore* jlpermission = [self resolvePermission:permission];
     if (jlpermission == NULL) {
-        [task success:[NSNumber numberWithBool:NO]];
+        [task error:[NSString stringWithFormat:@"Permission not supported on iOS: %@", permission]];
         return;
     }
 
@@ -34,12 +34,14 @@
         [jlpermission setRationale:rationale];
     }
 
-    [jlpermission authorize:^(BOOL granted, NSError * _Nullable error) {
+    // The only permission we still support directly from the permissions module is the notification permission
+    JLNotificationPermission* jlnotificationPermission = (JLNotificationPermission*)jlpermission;
+    [jlnotificationPermission authorize:^(NSString *deviceID, NSError * _Nullable error) {
         [jlpermission setRationale:nil]; // reset rationale
         if (error) {
             [ForgeLog d:[NSString stringWithFormat:@"permissions.check '%@' failed with error: %@", permission, error]];
         }
-        [task success:[NSNumber numberWithBool:granted]];
+        [task success:[NSNumber numberWithBool:deviceID != nil]];
     }];
 }
 
