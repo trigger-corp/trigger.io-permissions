@@ -24,8 +24,8 @@ forge.permissions = {
             forge.permissions._ios_check("capture", options, success, error);
         } else if (permission === "ios.permission.microphone") {
             forge.permissions._ios_check("capture", options, success, error);
-        } else if (permission === "ios.permission.photos") {
-            forge.permissions._ios_check("file", options, success, error);
+        } else if (permission === "ios.permission.photos_write") {
+            forge.permissions._ios_check("capture", options, success, error);
         } else if (permission === "ios.permission.location") {
             forge.permissions._ios_check("geolocation", options, success, error);
         } else {
@@ -60,8 +60,8 @@ forge.permissions = {
             forge.permissions._ios_request("capture", options, success, error);
         } else if (permission === "ios.permission.microphone") {
             forge.permissions._ios_request("capture", options, success, error);
-        } else if (permission === "ios.permission.photos") {
-            forge.permissions._ios_request("file", options, success, error);
+        } else if (permission === "ios.permission.photos_write") {
+            forge.permissions._ios_request("capture", options, success, error);
         } else if (permission === "ios.permission.location") {
             forge.permissions._ios_request("geolocation", options, success, error);
         } else {
@@ -103,7 +103,8 @@ forge.permissions = {
         outgoing:  "phone_outgoing"
     },
     photos: {
-        "read": "photos_read"
+        "read": "photos_read",
+        "write": "photos_write"
     },
     reminders: {
         receive: "reminders_receive"
@@ -154,6 +155,7 @@ forge.permissions = {
         storage_write:        "android.permission.WRITE_EXTERNAL_STORAGE",
         notification_receive: "",
         photos_read:          "com.google.android.apps.photos.permission.GOOGLE_PHOTOS",
+        photos_write:         "",
         reminders_receive:    "",
         test_nonexistent:     "android.permission.DOES_NOT_EXIST",
     },
@@ -183,7 +185,8 @@ forge.permissions = {
         storage_read:         "",
         storage_write:        "",
         notification_receive: "ios.permission.notification",
-        photos_read:          "ios.permission.photos",
+        photos_read:          "",
+        photos_write:         "ios.permission.photos_write",
         reminders_receive:    "ios.permission.reminders",
         test_nonexistent:     "ios.permission.does_not_exist",
     },
